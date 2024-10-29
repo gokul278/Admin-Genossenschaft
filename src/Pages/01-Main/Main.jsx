@@ -17,6 +17,12 @@ import archive from "../../assets/IMG/NAVBAR/archive.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import Home from "../03-Home/01-Home";
 import About from "../04-About/About";
+import Units from "../Units/Units";
+
+import bg from "../../assets/IMG/BG.png";
+import Gallery from "../Gallery/Gallery";
+import Settlement from "../Settlement/Settlement";
+import Archive from "../Archive/Archive";
 
 const Main = () => {
   const location = useLocation();
@@ -24,7 +30,14 @@ const Main = () => {
 
   return (
     <div className="w-[100%] h-screen flex">
-      <div className="w-[5%] bg-gray-800 border-r-2">
+      <div
+        className="w-[5%] border-r-2"
+        style={{
+          background: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="w-full h-screen">
           <div className="w-full h-[10vh] flex justify-center border-b border-[#acacac]">
             <img className="w-[60%] my-4 rounded" src={logo} alt="logo" />
@@ -151,7 +164,9 @@ const Main = () => {
               <Tooltip text="Units">
                 <button
                   type="button"
-                  className="hover:bg-[#ffffff4d] text-[#fff] p-2 rounded-full transition-all duration-150"
+                  className={`${
+                    location.pathname === "/units" ? "bg-[#ffffff4d]" : null
+                  } text-[#fff] p-2 rounded-full transition-all duration-150`}
                   onClick={() => {
                     navigate("/units");
                   }}
@@ -165,7 +180,9 @@ const Main = () => {
               <Tooltip text="Picture gallery">
                 <button
                   type="button"
-                  className="hover:bg-[#ffffff4d] text-[#fff] p-2 rounded-full transition-all duration-150"
+                  className={`${
+                    location.pathname === "/gallery" ? "bg-[#ffffff4d]" : null
+                  } text-[#fff] p-2 rounded-full transition-all duration-150`}
                   onClick={() => {
                     navigate("/gallery");
                   }}
@@ -179,7 +196,11 @@ const Main = () => {
               <Tooltip text="Settlement">
                 <button
                   type="button"
-                  className="hover:bg-[#ffffff4d] text-[#fff] p-2 rounded-full transition-all duration-150"
+                  className={`${
+                    location.pathname === "/settlement"
+                      ? "bg-[#ffffff4d]"
+                      : null
+                  } text-[#fff] p-2 rounded-full transition-all duration-150`}
                   onClick={() => {
                     navigate("/settlement");
                   }}
@@ -193,7 +214,9 @@ const Main = () => {
               <Tooltip text="Archive">
                 <button
                   type="button"
-                  className="hover:bg-[#ffffff4d] text-[#fff] p-2 rounded-full transition-all duration-150"
+                  className={`${
+                    location.pathname === "/archive" ? "bg-[#ffffff4d]" : null
+                  } text-[#fff] p-2 rounded-full transition-all duration-150`}
                   onClick={() => {
                     navigate("/archive");
                   }}
@@ -221,6 +244,14 @@ const Main = () => {
           <Home />
         ) : location.pathname === "/about" ? (
           <About />
+        ) : location.pathname === "/units" ? (
+          <Units />
+        ) : location.pathname === "/gallery" ? (
+          <Gallery />
+        ) : location.pathname === "/settlement" ? (
+          <Settlement />
+        ) : location.pathname === "/archive" ? (
+          <Archive />
         ) : null}
       </div>
     </div>

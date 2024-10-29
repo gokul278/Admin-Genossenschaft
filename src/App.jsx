@@ -5,7 +5,7 @@ import Main from "./Pages/01-Main/Main";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [showPage, setShowPage] = useState(false);
+  const [showPage, setShowPage] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,7 +17,8 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty
+  }, []);
+
   return (
     <>
       {showPage ? (
@@ -39,14 +40,11 @@ function App() {
           </Routes>
         </BrowserRouter>
       ) : (
-        <>
-          <div className="w-[100%] h-[100vh] flex justify-center items-center">
-            <h1 className="w-[90%] text-center font-bold text-[20px] font-mont">
-              Admin access is currently unavailable on mobile devices. Could you
-              please switch to a desktop to access the Admin Page?{" "}
-            </h1>
-          </div>
-        </>
+        <div className="w-full h-screen flex justify-center items-center">
+          <h1 className="w-4/5 text-center font-bold text-lg font-mont">
+            Admin access is currently unavailable on mobile devices. Please switch to a desktop to access the Admin Page.
+          </h1>
+        </div>
       )}
     </>
   );
